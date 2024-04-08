@@ -150,6 +150,16 @@ programs.steam = {
 
 
 # nvida subject to change 
+hardware.nvidia.prime = {
+
+offload = {
+			enable = true;
+			enableOffloadCmd = true;
+		};		# Make sure to use the correct Bus ID values for your system!
+		nvidiaBusId = "PCI:0:1:0";
+
+		amdgpuBusId = "PCI:0:11:0";
+	};
 
 
 # Enable OpenGL
@@ -160,7 +170,7 @@ programs.steam = {
   };
 
 # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["nvidia" "amdgpu" ];
   
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.powerManagement.enable = false;
